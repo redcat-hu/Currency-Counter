@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valuta Ellenőrző by REDCAT</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<main>
+<div class="penznem-box flex" id="penzkep">
+    <h1>Valuta Kalkulátor</h1>
+
+    <h3 class="valuta-box">
+        <div class="penznem">
+            <span>Pénznem:</span>
+            <select id="valuta_lista" onchange="ValValt();">
+                <option value="0">HUF</option>
+                <option value="1">EUR</option>
+                <option value="2">USD</option>
+            </select>
+        </div>
+        <label id="arfolyam_egesz">Árfolyam (HUF) <input id="arfolyam" type="number" min="350" max="500"></label>
+    </h3>
+</div>
+
+<div class="keszpenz-box flex box_alap">
+    <h2><i class="bi bi-cash"></i> Papír:</h2>
+    <form id="kp-lista">
+        <label><span id="pp0">500 Ft</span> <input type="number" name="keszpenz" id="p0" min="0"></label><br>
+        <label><span id="pp1">1000 Ft</span> <input type="number" name="keszpenz" id="p1" min="0"></label><br>
+        <label><span id="pp2">2000 Ft</span> <input type="number" name="keszpenz" id="p2" min="0"></label><br>
+        <label><span id="pp3">5000 Ft</span> <input type="number" name="keszpenz" id="p3" min="0"></label><br>
+        <label><span id="pp4">10.000 Ft</span> <input type="number" name="keszpenz" id="p4" min="0"></label><br>
+        <label><span id="pp5">20.000 Ft</span> <input type="number" name="keszpenz" id="p5" min="0"></label><br>
+        <label id="kp-extra"><span id="pp6">0</span> <input type="number" name="keszpenz" id="p6" min="0"></label>
+    </form>
+    <h2><span id="papir_ossz"></span></h2>
+    <!--
+    <label><i class="bi bi-coin"></i> Aprót is számoljon <input type="checkbox" name="apro" id="apro"></label>
+    -->
+</div>
+    
+
+<div class="apro-box flex box_alap" id="apro-box">
+    <h2><i class="bi bi-coin"></i> Apró:</h2>
+    <form id="form-apro">
+        <label><span id="aa0">5 Ft</span> <input type="number" name="apro" id="a0" min="0"></label><br>
+        <label><span id="aa1">10 Ft</span> <input type="number" name="apro" id="a1" min="0"></label><br>
+        <label><span id="aa2">20 Ft</span> <input type="number" name="apro" id="a2" min="0"></label><br>
+        <label><span id="aa3">50 Ft</span> <input type="number" name="apro" id="a3" min="0"></label><br>
+        <label><span id="aa4">100 Ft</span> <input type="number" name="apro" id="a4" min="0"></label><br>
+        <label><span id="aa5">200 Ft</span> <input type="number" name="apro" id="a5" min="0"></label><br>
+        <label id="apro-extra1"><span id="aa6">0</span> <input type="number" name="apro" id="a6" min="0"></label>
+        <label id="apro-extra2"><span id="aa7">0</span> <input type="number" name="apro" id="a7" min="0"></label>
+    </form>
+    <h2><span id="apro_ossz"></span></h2>
+</div>
+
+<div class="ossz-box flex box_alap">
+    <div class="ossz">
+        <h2>Összesen: <span id="osszegzo"></span></h2>
+        <button class="gomb1" onclick="Szamolj();"><i class="bi bi-calculator-fill"></i> Kalkuláció</button>
+        <button class="gomb1" onclick="Nyomtass();"><i class="bi bi-printer-fill"></i> Nyomtatás </button>
+    </div>
+</div>
+</main>
+
+
+
+
+<!-- Print -->
+<div class="print">
+    <div class="page">
+      <div class="subpage">
+        <!-- 1. másolat-->
+        <div class="halfpage nyom01">
+            <div class="cim">
+                <div class="left">
+                    <h1>Valuta Kalkulátor</h1>
+                    <p><b>www.red-cat.hu</b> / valuta</p>
+                </div>
+                <img src="./img/qr.png" alt="">
+                
+            </div>
+
+            <div class="reszletek">
+                <div class="01">
+                    <p><b>Dátum:</b> <span id="js_datum"></span></p>
+                    <p><b>Pénznem:</b> <span id="js_valuta"></span></p>
+                    <p><b>Árfolyam: </b><span id="js_arfolyam"></span></p>
+                    <br>
+                    
+                </div>
+                <div class="boxok">
+                    <div class="02 box3">
+                        <b>Papír részletező:</b>
+                        <div id="js_papir">
+                            
+                        </div>
+                        <div id="js_papir_ossz" class="eredmeny1">-</div>
+                    </div>
+                    <div class="03 box3">
+                        <b>Apró részletező:</b>
+                            <div id="js_apro">
+
+                            </div>
+                        <div id="js_apro_ossz" class="eredmeny1">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="osszeg">
+                <h2>Összesen: <span id="osszegzo2"></span></h2>
+                <p id="js_forintban"></p>
+                <h4>Számolta: .................................</h4>
+            </div>
+        </div>
+
+        <div class="megjegyzesek halfpage">
+            <h3>Megjegyzések:</h3>
+            <p></p>
+        </div>
+      </div>
+    </div>
+</div>
+
+<footer>
+    <h2>REDCAT</h2>
+</footer>
+<script src="./js/script.js"></script>
+</body>
+</html>

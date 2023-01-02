@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css");
+
+$hatter1: linear-gradient(30deg, rgb(226, 226, 226), white);
+$arnyek1: 2px 5px .5rem rgba(92, 104, 161, 0.5);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3 {
+    text-transform: uppercase;
+    margin: 2rem;
+}
+ul {
+    list-style: none;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+body {
+    background-image: linear-gradient(20deg, rgb(126, 126, 126), rgb(224, 224, 224));
+}
+main {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 1rem 0 1rem;
+    gap: 1rem;
+}
+
+// Dobozok
+input, form span, select {
+    font-size: 1rem;
+    margin: .3rem;
+    border-radius: 20px;
+    width: 5rem;
+    text-align: center;
+    border-color: rgba(0, 0, 0, 0.26);
+}
+input {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.penznem-box {
+    grid-column: 1/-1;
+    grid-row: 1;
+    background-size: cover;
+    background-position: center;
+    border-radius: 3rem;
+    color: whitesmoke;
+    text-align: center;
+    min-height: 300px;
+    position: relative;
+}
+.valuta-box {
+    display: flex;
+    justify-content: space-around;
+    align-items:flex-end;
+    flex-wrap: wrap;
+    width: 100%;
+    position: absolute;
+    margin: 0;
+    bottom: .5rem;
+}
+.box_alap {
+    box-shadow: $arnyek1;
+    background-image: $hatter1;
+    border-radius: 3rem;
+}
+.keszpenz-box {
+    padding: 1rem;
+    grid-column: span 12;
+    grid-row: 2;
+}
+.apro-box {
+    padding: 1rem;
+    grid-row: 3;
+    grid-column: span 12;    
+}
+.ossz-box {
+    grid-row: 4;
+    grid-column: span 12;
+    padding: 1rem;
+    border-radius: 3rem 3rem 0 0;
+    margin-bottom: 0;
+}
+.ossz {
+    padding: 1rem 3rem;
+    text-align: center;
+}
+.gomb1 {
+    background-color: antiquewhite;
+    box-shadow: 2px 2px .5rem rgba(61, 61, 61, 0.219);
+    font-size: 1.3rem;
+    padding: 10px 20px;
+    margin: 1rem;
+    border-radius: 2rem;
+    border-width: 0;
+}
+.szamolj:hover {
+    background-color: rgb(199, 199, 199);
+}
+footer {
+    padding: 4rem;
+    text-align: center;
+    color: antiquewhite;
+    background-image: linear-gradient(rgb(31, 31, 31), rgb(10, 10, 10));
+}
+
+// Nyomtatás
+.print {
+    display: none;
+
+    h1, h2, h3, p {
+        margin: 0;
+    }
+    .cim {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        padding-left: 1rem;
+    }
+    .reszletek {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+    }
+    img {
+        width: 100px;
+    }
+    .boxok {
+        display: flex;
+        gap: 1rem;
+    }
+    .box3 {
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        padding: 1.1rem;
+
+        b {
+            text-transform: uppercase;
+        }
+    }
+
+    .osszeg {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.1rem;
+    }
+    .eredmeny1 {
+        border-top: 1px dashed rgb(0, 0, 0);
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-align: center;
+    }
+    .nyom01 {
+        display: flex;
+        flex-direction: column;
+        justify-content:space-between;
+        border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
+    }
+    .megjegyzesek {
+        padding-top: 5rem;
+    }
+    
+    .page {
+        width: 21cm;
+        min-height: 29.7cm;
+        padding: 2cm;
+        margin: 0 auto;
+        border: 1px #D3D3D3 solid;
+        border-radius: 5px;
+        background: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+      
+    .halfpage {
+    height: 50%;
+    }
+
+    .subpage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    border: 1px rgb(255, 255, 255) solid;
+    height: 256mm;
+    outline: 1cm #ffffff solid;
+    }
+}
+    
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  
+  @media print {
+    main {display: none;}
+    footer {display: none;}
+    .print {display: block;}
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+  }
+
+  @media only screen and (min-width: 800px) {
+    body {
+        background-color: rgb(126, 156, 167);
+    }
+    .keszpenz-box, .apro-box {
+        grid-column: span 6;
+        grid-row: 2;
+    }
+  }
